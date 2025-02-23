@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry Nidhi ðŸ’™</title>
+    <style>
+        /* Full Screen Light Blue Overlay */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #a3d5ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: fadeOut 2s ease forwards;
+            animation-delay: 3s;
+        }
+
+        /* Heart Animation */
+        .heart {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: pulse 1s infinite alternate;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(0.9) rotate(-45deg); }
+            to { transform: scale(1.1) rotate(-45deg); }
+        }
+
+        @keyframes fadeOut {
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* Light Blue Background */
+        body {
+            font-family: Arial, sans-serif;
+            background: #cce7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeInPage 1.5s ease forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes fadeInPage {
+            100% { opacity: 1; }
+        }
+
+        /* Message Card */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #ff4d4d;
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 250px;
+            height: 200px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        /* Buttons */
+        .btn-group {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .no-btn {
+            background-color: #dc3545;
+        }
+
+        .yes-btn:hover {
+            background-color: #218838;
+        }
+
+        .no-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Light Blue Overlay with Heart Animation -->
+    <div id="overlay">
+        <div class="heart"></div>
+    </div>
+
+    <!-- Sorry Message Card -->
+    <div class="card">
+        <h2>I sincerely apologize, Nidhi ðŸ’™</h2>
+        <p class="emoji">ðŸ˜žðŸ’”</p>
+
+        <!-- Slideshow Images -->
+        <div class="slideshow-container">
+            <img src="Screenshot_2024-10-12-21-55-46-258_com.instagram.android.jpg" class="slides" style="opacity: 1;">
+            <img src="Screenshot_2024-08-04-14-35-25-918_com.instagram.android.jpg" class="slides">
+        </div>
+
+        <p>Hey Nidhi, I realize that I made a mistake and might have hurt you.<br>  
+        At that moment, I did not think properly, but now I truly regret it.ðŸ’™</p>
+        
+        <p><b>You are very special to me, and I do not want any distance to come between us  
+        because of my mistake. Please forgive me.</b></p>
+
+        <div class="btn-group">
+            <button class="yes-btn" onclick="alert('You forgave me? ðŸ’™ Thank you!')">Yes ðŸ’™</button>
+            <button class="no-btn" id="noBtn" onclick="firstNoClick()">No ðŸ’”</button>
+        </div>
+
+        <p class="signature">- Aadi</p>
+    </div>
+
+    <script>
+        let noBtn = document.getElementById("noBtn");
+        let firstClick = false;
+
+        function firstNoClick() {
+            if (!firstClick) {
+                alert("Please maaf kar do, bohot mehnat se banaya hai! ðŸ˜¢");
+                firstClick = true;
+            } else {
+                moveNoButton();
+            }
+        }
+
+        function moveNoButton() {
+            let x = Math.floor(Math.random() * 200) - 100;
+            let y = Math.floor(Math.random() * 100) - 50;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Slideshow Script
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = "0";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.opacity = "1";
+            setTimeout(showSlides, 2000); // Faster slideshow (2 sec)
+        }
+
+        showSlides();
+    </script>
+
+</body>
+</html>
